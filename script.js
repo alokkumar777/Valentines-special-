@@ -4,7 +4,7 @@ const content = document.getElementById("content");
 const video = document.getElementById("kissing");
 const msg = document.getElementById("msg");
 
-let yesButtonSize = 1; // Initial size yes button
+let yesButtonSize = 13; // Initial size yes button
 
 const phrases = [
     "Are you sure?",
@@ -14,6 +14,10 @@ const phrases = [
     "Don't do this to me",
     "I'm gonna cry",
     "Please don't break my heart :(",
+    "Tume rani bna ke rakhuga",
+    "You deserve a man like me",
+    "You can make you smile",
+    "I like you more than anyone"
 ];
 
 let phraseIndex = 0;
@@ -23,8 +27,8 @@ noButton.addEventListener("click", () => {
 
     phraseIndex = (phraseIndex + 1) % phrases.length; // Cycle through the phrases
 
-    yesButtonSize *= 2; // Double the size
-    yesButton.style.fontSize = `${yesButtonSize}rem`; // Apply new size
+    yesButtonSize *= 1.2; // Double the size
+    yesButton.style.fontSize = `${yesButtonSize}px`; // Apply new size
 });
 
 
