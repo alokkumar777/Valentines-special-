@@ -16,7 +16,7 @@ const phrases = [
     "Please don't break my heart :(",
     "Tume rani bna ke rakhuga",
     "You deserve a man like me",
-    "You can make you smile",
+    "I can make you smile",
     "I like you more than anyone"
 ];
 
