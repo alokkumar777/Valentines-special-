@@ -23,7 +23,7 @@ noButton.addEventListener("click", () => {
 
     phraseIndex = (phraseIndex + 1) % phrases.length; // Cycle through the phrases
 
-    yesButtonSize *= 2; // Double the size multiplier
+    yesButtonSize *= 2; // Double the size
     yesButton.style.fontSize = `${yesButtonSize}rem`; // Apply new size
 });
 
