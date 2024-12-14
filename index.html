@@ -18,29 +18,19 @@
 
 <body>
 
-    <div class="main-container" id="content">
-
-        <video class="jumping-bear" src="GIFs/bear-jumping.mp4" autoplay muted loop></video>
-
-        <h2>Will you be my valentine?</h2>
-
-        <button class="btn-yes" id="yesButton">Yes</button>
-        <button class="btn-no" id="noButton">No</button>
-
+    <div id="content">
+        <h1>Will You Be Mine? ❤️</h1>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
     </div>
 
-    <div class="last-container"> <!-- show content after click yes --> 
-        <video class="kissing-bear" id="kissing" src="GIFs/Bear-Kissing.mp4" autoplay muted loop height="256" width="auto"
-            hidden></video>
+    <video id="kissing" hidden width="400">
+        <source src="GIFs/Bear-Kissing.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-        <h2 hidden id="msg">Ooo Yah!!!!</h2>
-    </div>
-
+    <div id="msg">Thank you for saying YES! ❤️</div>
     <script src="script.js"></script>
-
-    <audio autoplay>
-        <source src="audio/phele bhi me.mp3#t=25">
-    </audio>
 </body>
 
 </html>
