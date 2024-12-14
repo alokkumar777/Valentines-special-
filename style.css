@@ -27,9 +27,14 @@ button {
     color: white;
 }
 
-#kissing {
-    display: none;
-}
+    /* Responsive video */
+    #kissing {
+        display: none;
+        width: 100%; /* Make the video width 100% */
+        max-width: 600px; /* Max width of 600px for larger screens */
+        height: auto; /* Maintain aspect ratio */
+        margin: auto auto; /* Center the video */
+    }
 
 #msg {
     display: none;
@@ -56,3 +61,18 @@ button {
         opacity: 0;
     }
 }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 600px) {
+        #yesButton, #noButton {
+            font-size: 14px; /* Smaller buttons on small screens */
+            padding: 8px 15px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        #yesButton, #noButton {
+            font-size: 12px; /* Even smaller buttons on very small screens */
+            padding: 6px 12px;
+        }
+    }
