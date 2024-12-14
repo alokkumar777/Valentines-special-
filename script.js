@@ -1,10 +1,9 @@
 const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
 const content = document.getElementById("content");
-const video = document.getElementById("kissing");
+const video = document.getElementById("dancing");
 const msg = document.getElementById("msg");
 const backgroundAudio = document.getElementById("backgroundAudio");
-
 
 let yesButtonSize = 13; // Initial size yes button
 
