@@ -52,9 +52,9 @@ yesButton.addEventListener("click", () => {
   });
 
     // Debug video loading
-    video.addEventListener("loadeddata", () => {
-      console.log("Video loaded successfully!");
-    });
+    // video.addEventListener("loadeddata", () => {
+    //   console.log("Video loaded successfully!");
+    // });
 
   // Show the message
   msg.style.display = "block";
