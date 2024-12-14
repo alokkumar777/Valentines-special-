@@ -5,7 +5,7 @@ const video = document.getElementById("dancing");
 const msg = document.getElementById("msg");
 const backgroundAudio = document.getElementById("backgroundAudio");
 
-let yesButtonSize = 13;
+let yesButtonSize = 13; // Initial size yes button
 
 const phrases = [
   "Are you sure?",
@@ -23,84 +23,61 @@ const phrases = [
 
 let phraseIndex = 0;
 
-// Pre-load media
-window.addEventListener("load", () => {
-  // Pre-load video
-  video.load();
-  video.addEventListener("error", (e) => {
-    console.error("Video Error:", video.error);
-  });
-
-  // Pre-load audio
-  backgroundAudio.load();
-  backgroundAudio.addEventListener("error", (e) => {
-    console.error("Audio Error:", backgroundAudio.error);
-  });
-});
-
 noButton.addEventListener("click", () => {
+  // Update text from the array
   noButton.textContent = phrases[phraseIndex];
   phraseIndex = (phraseIndex + 1) % phrases.length;
 
+  // Random movement for "No" button
   const randomX = Math.random() * window.innerWidth * 0.8;
   const randomY = Math.random() * window.innerHeight * 0.6;
   noButton.style.position = "absolute";
   noButton.style.left = `${randomX}px`;
   noButton.style.top = `${randomY}px`;
 
+  // Make "Yes" button bigger
   yesButtonSize *= 1.2;
   yesButton.style.fontSize = `${yesButtonSize}px`;
 });
 
-yesButton.addEventListener("click", async () => {
-  try {
-    content.style.display = "none";
+yesButton.addEventListener("click", () => {
+  // Hide content
+  content.style.display = "none";
 
-    // Show video first
-    video.removeAttribute("hidden");
-    video.style.display = "block";
+  // Show and play the video
+  video.removeAttribute("hidden"); // Remove the "hidden" attribute if present
+  video.style.display = "block"; // Ensure the video is visible
+  video.play().catch((error) => {
+    console.error("Video playback failed:", error);
+  });
 
-    // Play both media with proper error handling
-    await Promise.all([
-      video.play().catch((error) => {
-        console.error("Video playback failed:", error);
-        // Try playing again after user interaction
-        video.addEventListener("click", () => video.play());
-      }),
-      backgroundAudio.play().catch((error) => {
-        console.error("Audio playback failed:", error);
-        // Try playing again after user interaction
-        backgroundAudio.addEventListener("click", () => backgroundAudio.play());
-      }),
-    ]);
+    // Debug video loading
+    // video.addEventListener("loadeddata", () => {
+    //   console.log("Video loaded successfully!");
+    // });
 
-    msg.style.display = "block";
-    createHearts();
-  } catch (error) {
-    console.error("Media playback error:", error);
-  }
+  // Show the message
+  msg.style.display = "block";
+
+  backgroundAudio.play().catch((error) => {
+    console.error("Audio playback failed:", error);
+  });
+
+  createHearts(); // Call the function to create floating hearts
 });
 
 function createHearts() {
   for (let i = 0; i < 20; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "❤️";
+    heart.innerHTML = "❤️"; // Add heart symbol
     heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.bottom = "0";
-    heart.style.fontSize = Math.random() * 30 + 10 + "px";
-    heart.style.animationDelay = Math.random() * 2 + "s";
+    heart.style.bottom = "0"; // Start at the bottom of the screen
+    heart.style.fontSize = Math.random() * 30 + 10 + "px"; // Random sizes
+    heart.style.animationDelay = Math.random() * 2 + "s"; // Staggered animations
     document.body.appendChild(heart);
+
+    // Remove the heart after animation completes
+    // setTimeout(() => heart.remove(), 2000 * 10);
   }
 }
-
-// Add these helper functions to check media status
-function checkMediaStatus() {
-  console.log("Video ready state:", video.readyState);
-  console.log("Audio ready state:", backgroundAudio.readyState);
-  console.log("Video network state:", video.networkState);
-  console.log("Audio network state:", backgroundAudio.networkState);
-}
-
-// Check media status periodically
-setInterval(checkMediaStatus, 2000);
