@@ -45,11 +45,16 @@ yesButton.addEventListener("click", () => {
   content.style.display = "none";
 
   // Show and play the video
-  video.style.display = "block"; // Ensure the video is visible
   video.removeAttribute("hidden"); // Remove the "hidden" attribute if present
+  video.style.display = "block"; // Ensure the video is visible
   video.play().catch((error) => {
     console.error("Video playback failed:", error);
   });
+
+    // Debug video loading
+    video.addEventListener("loadeddata", () => {
+      console.log("Video loaded successfully!");
+    });
 
   // Show the message
   msg.style.display = "block";
